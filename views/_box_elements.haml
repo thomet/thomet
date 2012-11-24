@@ -1,0 +1,4 @@
+- elements.each_with_index do |repo, index|
+  .grid_4{:class => "#{index % 2 ? 'alpha' : 'omega'}"}
+    %blockquote.box
+      %p= repo

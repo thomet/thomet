@@ -44,6 +44,15 @@ a {
   margin-top: 40px;
 }
 
+.twitter {
+  margin-bottom: 10px;
+}
+
+.github {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
 .sidebar {
   img {
     padding: 5px;
@@ -110,4 +119,21 @@ a {
     padding: 18px 0 15px 0;
     -webkit-font-smoothing: antialiased;
   }
+}
+
+.box {
+  margin: 20px;
+  padding: 15px;
+  color: #333;
+  background: #eee;
+  /* css3 */
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.box p {
+  font-size: 16px;
+  line-height: 1.25em;
+  height: 120px;
 }

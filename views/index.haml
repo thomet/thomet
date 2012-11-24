@@ -33,6 +33,17 @@
               %a{:href => 'http://www.thomet.de'} http://www.thomet.de
 
       .grid_8.content
+        .grid_8.twitter
+          .grid_8
+            %img{:src => '/images/twitter-logo.gif', :height => '36px'}
+          .grid_8
+            = haml :_box_elements, :locals => { :elements => @tweets }
+
+        .grid_8.github
+          .grid_8
+            %img{:src => '/images/github-logo.png', :height => '36px'}
+          .grid_8
+            = haml :_box_elements, :locals => { :elements => @repos }
 
   :javascript
     $('#profile').mouseover(function() {
