@@ -8,6 +8,37 @@
     = css :application, :media => 'screen'
 
   %body
-    .header
-      .container_12
-        %h1.grid_12 Thomas Metzmacher
+    .container_12.main
+      .grid_3.suffix_1.sidebar
+        .grid_3
+          %img{:src => 'images/thomet_1.png', :width => '200px', :id => 'profile'}
+        .grid_3.name
+          %h1
+            %span Thomas Metzmacher
+            %em thomet
+        .grid_3.details
+          %dl
+            %dt
+              %span.mini-icon.mini-icon-location
+            %dd Leipzig/Germany
+          %dl
+            %dt
+              %span.mini-icon.mini-icon-unread-note
+            %dd
+              %a{:href => 'mailto:kontakt@thomet.de'} kontakt@thomet.de
+          %dl
+            %dt
+              %span.mini-icon.mini-icon-link
+            %dd
+              %a{:href => 'http://www.thomet.de'} http://www.thomet.de
+
+      .grid_8.content
+
+  :javascript
+    $('#profile').mouseover(function() {
+      $(this).attr('src', "images/thomet_2.png");
+    });
+
+    $('#profile').mouseout(function() {
+      $(this).attr('src', "images/thomet_1.png");
+    });

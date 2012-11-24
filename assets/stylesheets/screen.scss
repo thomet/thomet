@@ -3,3 +3,111 @@ body {
   color: #333;
   font: 13px Helvetica, arial, freesans, clean, sans-serif;
 }
+
+h1 {
+  font-weight: bold;
+}
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+.mini-icon {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  font-family: 'Octicons Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  text-decoration: inherit;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1;
+  text-decoration: none;
+
+  &.mini-icon-location::before {
+    content: "\f060";
+  }
+
+  &.mini-icon-unread-note::before {
+    content: "\f03b";
+  }
+
+  &.mini-icon-link::before {
+    content: "\f05c";
+  }
+}
+
+.main {
+  margin-top: 40px;
+}
+
+.sidebar {
+  img {
+    padding: 5px;
+    background: white;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    width: 210px;
+    height: 210px;
+    border: 1px solid #DDD;
+  }
+
+  h1 {
+    font-size: 26px;
+    letter-spacing: -1px;
+    color: #495961;
+    margin-top: 6px;
+
+    span {
+      line-height: 26px;
+    }
+
+    em {
+      display: inline-block;
+      width: 100%;
+      font-family: "Helvetica Neue", Helvetica, arial, freesans, clean, sans-serif;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 300;
+      color: #666;
+      position: relative;
+      top: -2px;
+      vertical-align: top;
+      letter-spacing: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+  }
+
+  dl {
+    margin: 5px 0 0 0;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+
+    dt {
+      margin: 0;
+      float: left;
+      width: 22px;
+      color: #D0D0D0;
+    }
+
+    dd {
+      margin: 0 0 0 22px;
+      width: 195px;
+      overflow-x: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  dl:first-child {
+    margin-top: 0;
+  }
+
+  .details {
+    border-top: 1px solid #DDD;
+    border-bottom: 1px solid #DDD;
+    padding: 18px 0 15px 0;
+    -webkit-font-smoothing: antialiased;
+  }
+}
