@@ -39,6 +39,10 @@ class Application < Sinatra::Base
 
   # Helpers
   helpers do
+    def shorten(text, length)
+      text.length > length ? "#{text[0..length-3]}..." : text
+    end
+
     def repository_text(repository)
       "<a href='#{repository.html_url}' class='repo_link'>#{repository.name}</a>: <span class='description'>#{repository.description}</span>"
     end
