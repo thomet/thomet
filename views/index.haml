@@ -40,15 +40,7 @@
       .grid_8.content
         .grid_8.twitter
           .grid_8
-            %img{:src => '/images/twitter-logo.gif', :height => '36px'}
-          .grid_8
-            = haml :_box_elements, :locals => { :elements => @tweets }
-
-        .grid_8.github
-          .grid_8
-            %img{:src => '/images/github-logo.png', :height => '36px'}
-          .grid_8
-            = haml :_box_elements, :locals => { :elements => @repos }
+            = haml :_box_elements, :locals => { :elements => @elements }
 
   :javascript
     $('#profile').mouseover(function() {

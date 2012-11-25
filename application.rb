@@ -50,30 +50,30 @@ class Application < Sinatra::Base
     def retrieve_tweets
       begin
         if cached_tweets = REDIS.get("tweets")
-          YAML::load(cached_tweets)
+          tweets = YAML::load(cached_tweets)
         else
           unformatted_tweets = Twitter.user_timeline("tmetzmac")[0..3]
           tweets = unformatted_tweets.collect{ |tweet| auto_link(tweet.text) }
           REDIS.set("tweets", tweets.to_yaml)
-          tweets
         end
-      rescue Exception => e
-        [e]
+        tweets.map{ |tweet| { :icon => 'icon-twitter', :text => tweet } }
+      rescue
+        []
       end
     end
 
     def retrieve_repos
       begin
         if cached_tweets = REDIS.get("repositories")
-          YAML::load(cached_tweets)
+          repositories =YAML::load(cached_tweets)
         else
           unformatted_repositories = Octokit.repositories("thomet")[0..3]
           repositories = unformatted_repositories.collect{ |repository| repository_text(repository) }
           REDIS.set("repositories", repositories.to_yaml)
-          repositories
         end
-      rescue Exception => e
-        [e]
+        repositories.map{ |repository| { :icon => 'icon-github', :text => repository } }
+      rescue
+        []
       end
     end
 
@@ -93,8 +93,9 @@ class Application < Sinatra::Base
 
   # Routes
   get '/' do
-    @tweets = retrieve_tweets
-    @repos = retrieve_repos
+    @elements = []
+    @elements += retrieve_tweets
+    @elements += retrieve_repos
 
     haml :index
   end

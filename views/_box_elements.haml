@@ -1,4 +1,7 @@
 - elements.each_with_index do |element, index|
   .grid_4{:class => "#{index % 2 ? 'alpha' : 'omega'}"}
     %blockquote.box
-      %p= shorten(element, 300)
+      %p
+        %i{ :class => "#{element[:icon]}" }
+          = shorten(element[:text], 275)
+
