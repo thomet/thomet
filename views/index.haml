@@ -1,10 +1,15 @@
 !!!
-%html{ :xmlns => "http://www.w3.org/1999/xhtml", :lang => "de", "xml:lang" => "de"}
+!= cc_html(:lang => 'en') do
   %head
     %title Thomas Metzmacher
     %meta{"http-equiv" => "Content-Type", :content => "text/html; charset=utf-8"}
     %link{:href => "/stylesheets/960.min.css", :rel => "stylesheet", :type => "text/css"}
     %script{:type => "text/javascript", :src  => "javascripts/jquery-1.8.2.min.js"}
+    /[if lt IE 9]
+      %script{:src => "http://html5shim.googlecode.com/svn/trunk/html5.js"}
+    %link{:href => "/stylesheets/font-awesome.css", :rel => "stylesheet", :type => "text/css"}
+    /[if IE 7]
+      %link{:href => "/stylesheets/font-awesome-ie7.css", :rel => "stylesheet", :type => "text/css"}
     = css :application, :media => 'screen'
 
   %body
@@ -19,16 +24,16 @@
         .grid_3.details
           %dl
             %dt
-              %span.mini-icon.mini-icon-location
+              %i{:class => 'icon-map-marker'}
             %dd Leipzig/Germany
           %dl
             %dt
-              %span.mini-icon.mini-icon-unread-note
+              %i{:class => 'icon-envelope'}
             %dd
               %a{:href => 'mailto:kontakt@thomet.de'} kontakt@thomet.de
           %dl
             %dt
-              %span.mini-icon.mini-icon-link
+              %i{:class => 'icon-link'}
             %dd
               %a{:href => 'http://www.thomet.de'} http://www.thomet.de
 
