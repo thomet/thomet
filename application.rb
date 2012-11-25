@@ -31,6 +31,8 @@ class Application < Sinatra::Base
   # Google Analytics
   use Rack::GoogleAnalytics, :tracker => 'UA-36558630-1'
 
+  MAX_ELEMENTS_ON_SITE = 9
+
   configure do
     require 'redis'
     uri = URI.parse(ENV["REDISTOGO_URL"] || "redis://127.0.0.1:6379")
@@ -47,31 +49,31 @@ class Application < Sinatra::Base
       "<a href='#{repository.html_url}' class='repo_link'>#{repository.name}</a>: <span class='description'>#{repository.description}</span>"
     end
 
-    def retrieve_tweets
+    def retrieve_tweets(count)
       begin
         if cached_tweets = REDIS.get("tweets")
           tweets = YAML::load(cached_tweets)
         else
-          unformatted_tweets = Twitter.user_timeline("tmetzmac")[0..3]
-          tweets = unformatted_tweets.collect{ |tweet| auto_link(tweet.text) }
+          unformatted_tweets = Twitter.user_timeline("tmetzmac", :count => count, :trim_user => true)
+          tweets = unformatted_tweets.collect{ |tweet| {:text => auto_link(tweet.text), :date => tweet.created_at} }
           REDIS.set("tweets", tweets.to_yaml)
         end
-        tweets.map{ |tweet| { :icon => 'icon-twitter', :text => tweet } }
+        tweets.map{ |tweet| tweet.merge({:icon_class => 'icon-twitter', :box_class => 'twitter'}) }
       rescue
         []
       end
     end
 
-    def retrieve_repos
+    def retrieve_repos(count)
       begin
         if cached_tweets = REDIS.get("repositories")
           repositories =YAML::load(cached_tweets)
         else
-          unformatted_repositories = Octokit.repositories("thomet")[0..3]
-          repositories = unformatted_repositories.collect{ |repository| repository_text(repository) }
+          unformatted_repositories = Octokit.repositories("thomet")[0...count]
+          repositories = unformatted_repositories.collect{ |repository| { :text => shorten(repository_text(repository), 275), :date => Time.parse(repository.updated_at) } }
           REDIS.set("repositories", repositories.to_yaml)
         end
-        repositories.map{ |repository| { :icon => 'icon-github', :text => repository } }
+        repositories.map{ |repository| repository.merge({:icon_class => 'icon-github', :box_class => 'github'}) }
       rescue
         []
       end
@@ -94,8 +96,9 @@ class Application < Sinatra::Base
   # Routes
   get '/' do
     @elements = []
-    @elements += retrieve_tweets
-    @elements += retrieve_repos
+    @elements += retrieve_repos(3)
+    @elements += retrieve_tweets(MAX_ELEMENTS_ON_SITE - @elements.length)
+    @elements.sort_by!{|element| element[:date] }.reverse!
 
     haml :index
   end

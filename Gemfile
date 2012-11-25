@@ -12,4 +12,6 @@ gem 'redis'
 
 group :development do
   gem 'shotgun'
+  gem 'pry'
+  gem 'pry-remote'
 end

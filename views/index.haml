@@ -14,14 +14,14 @@
 
   %body
     .container_12.main
-      .grid_3.suffix_1.sidebar
-        .grid_3
-          %img{:src => 'images/thomet_1.png', :width => '200px', :id => 'profile'}
-        .grid_3.name
+      .grid_12.header
+        .grid_3.alpha
+          %img{:src => 'images/thomet_1.png', :id => 'profile'}
+        .grid_9.omega.name
           %h1
             %span Thomas Metzmacher
             %em thomet
-        .grid_3.details
+        .grid_9.omega.details
           %dl
             %dt
               %i{:class => 'icon-map-marker'}
@@ -37,10 +37,8 @@
             %dd
               %a{:href => 'http://www.thomet.de'} http://www.thomet.de
 
-      .grid_8.content
-        .grid_8.twitter
-          .grid_8
-            = haml :_box_elements, :locals => { :elements => @elements }
+      .grid_12.elements
+        = haml :_box_elements, :locals => { :elements => @elements }
 
   :javascript
     $('#profile').mouseover(function() {
