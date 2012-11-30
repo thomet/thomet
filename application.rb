@@ -57,6 +57,7 @@ class Application < Sinatra::Base
           unformatted_tweets = Twitter.user_timeline("tmetzmac", :count => count, :trim_user => true)
           tweets = unformatted_tweets.collect{ |tweet| {:text => auto_link(tweet.text), :date => tweet.created_at} }
           REDIS.set("tweets", tweets.to_yaml)
+          REDIS.expire("tweets", 43200)
         end
         tweets.map{ |tweet| tweet.merge({:icon_class => 'icon-twitter', :box_class => 'twitter'}) }
       rescue
@@ -67,11 +68,12 @@ class Application < Sinatra::Base
     def retrieve_repos(count)
       begin
         if cached_tweets = REDIS.get("repositories")
-          repositories =YAML::load(cached_tweets)
+          repositories = YAML::load(cached_tweets)
         else
           unformatted_repositories = Octokit.repositories("thomet")[0...count]
           repositories = unformatted_repositories.collect{ |repository| { :text => shorten(repository_text(repository), 275), :date => Time.parse(repository.updated_at) } }
           REDIS.set("repositories", repositories.to_yaml)
+          REDIS.expire("repositories", 43200)
         end
         repositories.map{ |repository| repository.merge({:icon_class => 'icon-github', :box_class => 'github'}) }
       rescue
