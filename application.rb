@@ -62,7 +62,8 @@ class Application < Sinatra::Base
           REDIS.expire("tweets", 43200)
         end
         tweets.map{ |tweet| tweet.merge({:icon_class => 'icon-twitter', :box_class => 'twitter'}) }
-      rescue
+      rescue Exception => e
+        logger.error e
         []
       end
     end
@@ -78,7 +79,8 @@ class Application < Sinatra::Base
           REDIS.expire("repositories", 43200)
         end
         repositories.map{ |repository| repository.merge({:icon_class => 'icon-github', :box_class => 'github'}) }
-      rescue
+      rescue Exception => e
+        logger.error e
         []
       end
     end
