@@ -13,6 +13,8 @@ class Application < Sinatra::Base
   # Formatting tweets
   include Twitter::Autolink
 
+  set :logging, true
+
   set :root, File.dirname(__FILE__)
   register Sinatra::AssetPack
 
