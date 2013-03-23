@@ -1,116 +1,183 @@
 body {
-  line-height: 1.4;
-  color: #333;
-  font: 13px Helvetica, arial, freesans, clean, sans-serif;
-}
-
-h1 {
-  font-weight: bold;
-}
-
-a {
-  color: #4183C4;
-  text-decoration: none;
-}
-
-.main {
-  margin-top: 40px;
-}
-
-.elements {
-  margin-bottom: 10px;
-}
-
-.header {
-  img {
-    padding: 5px;
-    background: white;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-    width: 170px;
-    height: 170px;
-    border: 1px solid #DDD;
-  }
-
-  h1 {
-    font-size: 26px;
-    letter-spacing: -1px;
-    color: #495961;
-    margin-top: 6px;
-
-    span {
-      line-height: 26px;
-    }
-
-    em {
-      display: inline-block;
-      width: 100%;
-      font-family: "Helvetica Neue", Helvetica, arial, freesans, clean, sans-serif;
-      font-size: 20px;
-      font-style: normal;
-      font-weight: 300;
-      color: #666;
-      position: relative;
-      top: -2px;
-      vertical-align: top;
-      letter-spacing: 0;
-      -webkit-font-smoothing: antialiased;
+  font-family: 'Geneva', 'Trebuchet MS', sans-serif;
+  font-size: 11px;
+  font-stretch: normal;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 15px;
+  color: rgb(156, 156, 156);
+	background: rgb(31, 31, 31);
+	margin: 0pt;
+  
+  a {
+    color: rgb(65, 128, 255);
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
     }
   }
 
-  dl {
-    margin: 5px 0 0 0;
-    font-size: 14px;
-    -webkit-font-smoothing: antialiased;
+  .content {
+    margin-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    overflow: hidden;
+    position: relative;
+    word-wrap: break-word;
+    background: rgb(17, 17, 17);
+    text-align: left;
+    width: 800px;
+    
+    .picture {
+      background: url('/images/picture.jpg');
+      margin-bottom: 0px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 0px;
+      
+      height: 448px;
+      width: 448px;
+    }
+    
+    .menu {
+      display: none;
+      color: rgb(255, 255, 255);
+      margin-bottom: 0px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 10px;
+      width: 589px;
+      
+      ul {
+        margin: 0px 15px 0px 15px;
+        list-style: none;
+        padding: 0px;
 
-    dt {
-      margin: 0;
-      float: left;
-      width: 22px;
-      color: #D0D0D0;
+        li {
+          list-style-type: none;
+          display: inline;
+          padding: 0px;
+          margin: 0px;
+          
+          a {
+            font-family: Arial, 'Lucida Grande', sans-serif;
+            font-size: 11px;
+            font-weight: bold;
+            line-height: 28px;
+            padding: 8px;
+            color: rgb(255, 255, 255);
+          }
+        }
+      }
+    }
+    
+    .content_2 {
+      margin-bottom: 0px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 0px;
+      width: 589px;
+      border-top: 1px solid rgb(66, 66, 66);
+      
+      h1 {
+        color: rgb(255, 255, 255);
+        font-family: 'Consolas';
+        font-size: 22px;
+        font-weight: normal;
+      }
+      
+      .content_3 {
+        float: left;
+        width: 389px;
+        table tr {          
+          td {
+            padding: 10px 0px;
+            
+            &.logo {
+              width: 64px;
+              height: 64px;
+              background-repeat:no-repeat;
+              background-position:center; 
+              
+              &.icon-github {
+                background-image: url('/images/github_64.png');
+              }
+              
+              &.icon-twitter {
+                background-image: url('/images/twitter_64.png');
+              }
+            }
+          
+            &.message {
+              padding-top: 15px;
+              padding-left: 15px;
+              padding-right: 15px;
+              vertical-align: top;
+              width: 337px;
+              color: rgb(156, 156, 156);
+              
+              .title {
+                color: rgb(255, 255, 255);
+              }
+            }
+          }
+        }
+      }
+      
+      .menu_2 {
+        border-top: 5px solid rgb(66, 66, 66);
+        width: 200px;
+        float: right;
+        background: rgb(33, 33, 33);
+        
+        h1 {
+          margin-left: 10px;
+        }
+        
+        ol {
+          padding: 0 0 0 15px;
+          margin: 0;
+          text-indent: 0;
+          list-style-type: none;
+          list-style-image: none;
+          
+          li {
+            &:before {
+              content: '➡';
+              color: rgb(115, 250, 121);
+              font-family: 'ZapfDingbatsITC', 'Zapf Dingbats';
+              font-size: 11px;
+              font-stretch: normal;
+              font-style: normal;
+              font-weight: 400;
+            }
+            
+            line-height: 22px;
+            padding-left: 20px;
+            text-indent: -20px;
+          }
+        }
+      }
     }
 
-    dd {
-      margin: 0 0 0 22px;
-      width: 195px;
-      overflow-x: hidden;
-      text-overflow: ellipsis;
+    .footer {
+      font-size: 10px;
+      margin-bottom: 0px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 0px;
+      padding: 5px 0;
+      width: 589px;
+      border-top: 1px solid rgb(66, 66, 66);
+      text-align: center;
     }
-  }
-
-  dl:first-child {
-    margin-top: 0;
-  }
-
-  .details {
-    border-top: 1px solid #DDD;
-    border-bottom: 1px solid #DDD;
-    padding: 18px 0 15px 0;
-    -webkit-font-smoothing: antialiased;
   }
 }
 
-.box {
-  margin: 20px;
-  padding: 15px;
-  color: #333;
-  background: #eee;
-  /* css3 */
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-
-  &.twitter {
-    background-color: #CAE1FF;
-  }
-
-  &.github {
-    background-color: #eee;
-  }
-}
-
-.box p {
-  margin: 0;
-  font-size: 16px;
-  line-height: 1.25em;
-  height: 120px;
+.clear {
+  clear:left;
 }

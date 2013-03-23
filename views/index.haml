@@ -7,44 +7,36 @@
     %script{:type => "text/javascript", :src  => "javascripts/jquery-1.8.2.min.js"}
     /[if lt IE 9]
       %script{:src => "http://html5shim.googlecode.com/svn/trunk/html5.js"}
-    %link{:href => "/stylesheets/font-awesome.css", :rel => "stylesheet", :type => "text/css"}
-    /[if IE 7]
-      %link{:href => "/stylesheets/font-awesome-ie7.css", :rel => "stylesheet", :type => "text/css"}
     = css :application, :media => 'screen'
 
   %body
-    .container_12.main
-      .grid_12.header
-        .grid_3.alpha
-          %img{:src => 'images/thomet_1.png', :id => 'profile'}
-        .grid_9.omega.name
-          %h1
-            %span Thomas Metzmacher
-            %em thomet
-        .grid_9.omega.details
-          %dl
-            %dt
-              %i{:class => 'icon-map-marker'}
-            %dd Leipzig/Germany
-          %dl
-            %dt
-              %i{:class => 'icon-envelope'}
-            %dd
-              %a{:href => 'mailto:kontakt@thomet.de'} kontakt@thomet.de
-          %dl
-            %dt
-              %i{:class => 'icon-link'}
-            %dd
-              %a{:href => 'http://www.thomet.de'} http://www.thomet.de
-
-      .grid_12.elements
-        = haml :_box_elements, :locals => { :elements => @elements }
-
-  :javascript
-    $('#profile').mouseover(function() {
-      $(this).attr('src', "images/thomet_2.png");
-    });
-
-    $('#profile').mouseout(function() {
-      $(this).attr('src', "images/thomet_1.png");
-    });
+    .content
+      .picture
+      .menu
+        %ul
+          %li
+            %a{:href => ''} Activities
+          %li
+            %a{:href => ''} Contact
+      .content_2
+        .content_3
+          %h1 Latest Activities
+          
+          %table
+            - @elements.each do |element|
+              %tr
+                %td.logo{:class => element[:icon_class]}
+                %td.message
+                  .title
+                    = element[:box_class]
+                  = element[:text]
+        
+        .menu_2
+          %h1 Links
+          %ol
+            %li
+              %a{:href => 'http://leipzigonrails.de'} Leipzig on Rails
+          
+        .clear
+      .footer
+        thomet.de © 2013

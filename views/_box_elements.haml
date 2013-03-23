@@ -1,8 +1,0 @@
-- elements.each_with_index do |element, index|
-  - classes = ['alpha', '', 'omega']
-  .grid_4{:class => "#{classes[index%3]}"}
-    %blockquote.box{:class => element[:box_class]}
-      %p
-        %i{ :class => element[:icon_class] }
-          = element[:text]
-

@@ -31,7 +31,7 @@ class Application < Sinatra::Base
   # Google Analytics
   use Rack::GoogleAnalytics, :tracker => 'UA-36558630-1'
 
-  MAX_ELEMENTS_ON_SITE = 9
+  MAX_ELEMENTS_ON_SITE = 6
 
   configure do
     require 'redis'
