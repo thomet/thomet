@@ -6,6 +6,7 @@ require 'twitter'
 require 'octokit'
 require 'rack-google-analytics'
 require 'twitter-text'
+require 'yaml'
 
 require 'sinatra/assetpack'
 
