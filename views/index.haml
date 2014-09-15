@@ -29,7 +29,7 @@
                 %td.message
                   .title
                     = element[:box_class]
-                  - if false #element[:image] #FIXME
+                  - if element[:image]
                     %img{:src => element[:image]}
                     %br
                   = element[:text]
