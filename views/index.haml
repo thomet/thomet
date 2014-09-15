@@ -1,5 +1,5 @@
-!= cc_html(:lang => 'en') do
 !!!
+!= cc_html(:lang => 'en') do
   %head
     %title Thomas Metzmacher
     %meta{"http-equiv" => "Content-Type", :content => "text/html; charset=utf-8"}
@@ -29,6 +29,9 @@
                 %td.message
                   .title
                     = element[:box_class]
+                  - if false #element[:image] #FIXME
+                    %img{:src => element[:image]}
+                    %br
                   = element[:text]
         
         .menu_2
@@ -41,4 +44,4 @@
           
         .clear
       .footer
-        thomet.de © 2013
+        thomet.de © 2014

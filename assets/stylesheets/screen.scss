@@ -100,15 +100,19 @@ body {
             &.logo {
               width: 64px;
               height: 64px;
-              background-repeat:no-repeat;
-              background-position:center; 
-              
+              background-repeat: no-repeat;
+              background-position: center 10px;
+
               &.icon-github {
                 background-image: url('/images/github_64.png');
               }
               
               &.icon-twitter {
                 background-image: url('/images/twitter_64.png');
+              }
+
+              &.icon-fotocommunity {
+                background-image: url('/images/fotocommunity_64.png');
               }
             }
           
@@ -120,6 +124,10 @@ body {
               width: 337px;
               color: rgb(156, 156, 156);
               
+              img {
+                max-width: 150px;
+              }
+
               .title {
                 color: rgb(255, 255, 255);
               }
