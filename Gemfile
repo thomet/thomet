@@ -11,6 +11,7 @@ gem 'twitter-text'
 gem 'octokit'
 gem 'redis'
 gem 'nokogiri'
+gem 'newrelic_rpm'
 
 group :development do
   gem 'shotgun'
